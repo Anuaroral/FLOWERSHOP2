@@ -1,0 +1,2988 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Букет Astana — Свежие цветы с доставкой 24/7</title>
+<meta name="description" content="Доставка свежих цветов по Астане от 1 часа. Букеты от флористов, работаем 24/7. Заказ через сайт или WhatsApp.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #faf6f1;
+    --cream-deep: #f3ece3;
+    --ivory: #fffdf9;
+    --rose: #d4a5a5;
+    --rose-deep: #b88989;
+    --rose-soft: #e8d0d0;
+    --sage: #9caa94;
+    --charcoal: #2b2622;
+    --ash: #6b6560;
+    --line: #e8e1d6;
+    --gold: #b89968;
+
+    --serif: 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans: 'Manrope', -apple-system, sans-serif;
+
+    --shadow-sm: 0 2px 12px rgba(43, 38, 34, 0.06);
+    --shadow-md: 0 8px 32px rgba(43, 38, 34, 0.1);
+    --shadow-lg: 0 24px 64px rgba(43, 38, 34, 0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--charcoal);
+    background: var(--cream);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+  img { max-width: 100%; display: block; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 246, 241, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s ease;
+  }
+  header.scrolled {
+    border-bottom-color: var(--line);
+    background: rgba(255, 253, 249, 0.95);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+
+  .logo {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--charcoal);
+  }
+  .logo span { color: var(--rose-deep); }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rose-deep); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--rose-deep);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .nav-phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--charcoal);
+    transition: color 0.2s;
+  }
+  .nav-phone:hover { color: var(--rose-deep); }
+  .nav-phone svg { width: 16px; height: 16px; }
+
+  .cart-btn {
+    position: relative;
+    width: 42px; height: 42px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    transition: all 0.2s;
+  }
+  .cart-btn:hover {
+    border-color: var(--rose-deep);
+    background: var(--ivory);
+  }
+  .cart-btn svg { width: 18px; height: 18px; }
+  .cart-count {
+    position: absolute;
+    top: -4px; right: -4px;
+    width: 18px; height: 18px;
+    background: var(--rose-deep);
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 600;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .cart-count.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .menu-toggle {
+    display: none;
+    width: 28px; height: 20px;
+    position: relative;
+  }
+  .menu-toggle span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--charcoal);
+    transition: 0.3s;
+  }
+  .menu-toggle span:nth-child(1) { top: 0; }
+  .menu-toggle span:nth-child(2) { top: 50%; }
+  .menu-toggle span:nth-child(3) { bottom: 0; }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-text {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--rose-deep);
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 6.5vw, 92px);
+    line-height: 0.95;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose-deep);
+    font-weight: 300;
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ash);
+    max-width: 460px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.3s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 100px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  .btn-primary:hover {
+    background: var(--rose-deep);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .btn-ghost {
+    border-color: var(--charcoal);
+    color: var(--charcoal);
+  }
+  .btn-ghost:hover {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  .btn svg { width: 16px; height: 16px; }
+
+  .hero-image {
+    position: relative;
+    height: 80vh;
+    max-height: 720px;
+    opacity: 0;
+    animation: fadeIn 1.2s 0.3s forwards;
+  }
+
+  .hero-image-main {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1548094891-c4ba474eef9b?w=1200&q=85') center/cover;
+    border-radius: 4px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-image-accent {
+    position: absolute;
+    bottom: -32px; left: -48px;
+    width: 200px; height: 240px;
+    background: url('https://images.unsplash.com/photo-1584043720379-b56cd9199c94?w=600&q=85') center/cover;
+    border-radius: 4px;
+    box-shadow: var(--shadow-md);
+    z-index: 2;
+  }
+
+  .hero-stat {
+    position: absolute;
+    top: 40px; right: -32px;
+    background: var(--ivory);
+    padding: 20px 28px;
+    border-radius: 4px;
+    box-shadow: var(--shadow-md);
+    z-index: 3;
+  }
+  .hero-stat-number {
+    font-family: var(--serif);
+    font-size: 36px;
+    color: var(--rose-deep);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  .hero-decor {
+    position: absolute;
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--rose-soft);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .hero-decor.top {
+    top: 100px; right: 5%;
+    font-size: 200px;
+    opacity: 0.4;
+  }
+
+  /* ============ TRUST STRIP ============ */
+  .trust {
+    padding: 80px 0;
+    background: var(--ivory);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+  .trust-item {
+    text-align: center;
+    padding: 0 16px;
+    border-right: 1px solid var(--line);
+  }
+  .trust-item:last-child { border-right: none; }
+  .trust-icon {
+    width: 48px; height: 48px;
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+    color: var(--rose-deep);
+  }
+  .trust-icon svg { width: 100%; height: 100%; stroke-width: 1.2; }
+  .trust-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .trust-desc {
+    font-size: 13px;
+    color: var(--ash);
+    line-height: 1.5;
+  }
+
+  /* ============ SECTION HEADERS ============ */
+  .section {
+    padding: 120px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-size: clamp(36px, 5vw, 60px);
+    margin-bottom: 20px;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--rose-deep);
+    font-weight: 300;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--ash);
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ============ CATALOG ============ */
+  .catalog-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+  }
+  .tab {
+    padding: 12px 24px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ash);
+    transition: all 0.2s;
+    background: transparent;
+  }
+  .tab:hover {
+    color: var(--charcoal);
+    border-color: var(--charcoal);
+  }
+  .tab.active {
+    background: var(--charcoal);
+    color: var(--cream);
+    border-color: var(--charcoal);
+  }
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .product {
+    position: relative;
+    background: var(--ivory);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .product:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .product-image {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--cream-deep);
+  }
+  .product-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .product:hover .product-image img {
+    transform: scale(1.06);
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 16px; left: 16px;
+    padding: 6px 12px;
+    background: var(--ivory);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rose-deep);
+    border-radius: 100px;
+    font-weight: 500;
+  }
+  .product-badge.new { color: var(--sage); }
+
+  .product-wa {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 38px; height: 38px;
+    background: var(--ivory);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--charcoal);
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.3s;
+    box-shadow: var(--shadow-sm);
+  }
+  .product:hover .product-wa {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .product-wa:hover {
+    background: #25D366;
+    color: white;
+  }
+  .product-wa svg { width: 18px; height: 18px; }
+
+  .product-info {
+    padding: 24px 20px;
+  }
+  .product-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .product-meta {
+    font-size: 12px;
+    color: var(--ash);
+    margin-bottom: 16px;
+  }
+  .product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .product-price {
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+  .product-price-old {
+    font-size: 14px;
+    color: var(--ash);
+    text-decoration: line-through;
+    margin-right: 8px;
+    font-family: var(--sans);
+  }
+
+  .add-btn {
+    width: 38px; height: 38px;
+    border: 1px solid var(--charcoal);
+    border-radius: 50%;
+    color: var(--charcoal);
+    display: grid;
+    place-items: center;
+    transition: all 0.2s;
+  }
+  .add-btn:hover {
+    background: var(--charcoal);
+    color: var(--cream);
+    transform: rotate(90deg);
+  }
+  .add-btn svg { width: 16px; height: 16px; }
+
+  .product-unit-price {
+    font-size: 11px;
+    color: var(--ash);
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
+  .product-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .product-controls .qty {
+    border-radius: 100px;
+  }
+  .product-controls .qty button {
+    width: 26px; height: 26px;
+    font-size: 16px;
+    line-height: 1;
+  }
+  .product-controls .qty span {
+    min-width: 26px;
+    font-size: 13px;
+  }
+
+  /* ============ LOADING STATE ============ */
+  .products-loading {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 80px 20px;
+    color: var(--ash);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading-spinner {
+    width: 32px; height: 32px;
+    border: 2px solid var(--line);
+    border-top-color: var(--rose-deep);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  .products-loading button {
+    margin-top: 4px;
+    padding: 8px 24px;
+    border: 1px solid var(--charcoal);
+    border-radius: 100px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .products-loading button:hover { background: var(--charcoal); color: var(--cream); }
+
+  /* ============ OUT OF STOCK ============ */
+  .product.out-of-stock .product-image img { opacity: 0.45; }
+  .out-of-stock-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+  .out-of-stock-overlay span {
+    display: block;
+    width: 100%;
+    background: rgba(30,28,26,0.72);
+    color: #fff;
+    text-align: center;
+    padding: 9px 12px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    backdrop-filter: blur(4px);
+  }
+  .product.out-of-stock .product-controls {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* ============ OCCASIONS ============ */
+  .occasions {
+    background: var(--cream-deep);
+    padding: 120px 0;
+  }
+  .occasions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .occasion {
+    position: relative;
+    aspect-ratio: 3/4;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .occasion-img {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .occasion:hover .occasion-img {
+    transform: scale(1.06);
+  }
+  .occasion-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 0%, transparent 50%, rgba(0,0,0,0.6) 100%);
+  }
+  .occasion-content {
+    position: absolute;
+    bottom: 32px; left: 32px; right: 32px;
+    color: white;
+    z-index: 2;
+  }
+  .occasion-title {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .occasion-meta {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+  .occasion-arrow {
+    position: absolute;
+    top: 24px; right: 24px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    display: grid;
+    place-items: center;
+    color: white;
+    transition: all 0.3s;
+  }
+  .occasion:hover .occasion-arrow {
+    background: white;
+    color: var(--charcoal);
+  }
+  .occasion-arrow svg { width: 16px; height: 16px; }
+
+  .occasion.large {
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+
+  /* ============ ABOUT ============ */
+  .about {
+    padding: 140px 0;
+    background: var(--ivory);
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+  .about-images {
+    position: relative;
+    height: 600px;
+  }
+  .about-img-1 {
+    position: absolute;
+    top: 0; left: 0;
+    width: 65%; height: 70%;
+    background: url('Hortenzia.jpg') center/cover;
+    border-radius: 4px;
+  }
+  .about-img-2 {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 60%; height: 55%;
+    background: url('FlowerBucket.jpg') center/cover;
+    border-radius: 4px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .about-text h2 {
+    font-size: clamp(36px, 4vw, 56px);
+    margin-bottom: 32px;
+  }
+  .about-text p {
+    color: var(--ash);
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 44px;
+    color: var(--rose-deep);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+
+  /* ============ DELIVERY ============ */
+  .delivery {
+    background: var(--cream-deep);
+    padding: 120px 0;
+  }
+  .delivery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px;
+  }
+  .delivery-card {
+    background: var(--ivory);
+    padding: 48px;
+    border-radius: 4px;
+  }
+  .delivery-card h3 {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+  .time-slots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .slot {
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--charcoal);
+    transition: all 0.2s;
+  }
+  .slot:hover {
+    border-color: var(--rose-deep);
+    background: var(--cream);
+  }
+  .delivery-zones {
+    list-style: none;
+  }
+  .delivery-zones li {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  .delivery-zones li:last-child { border-bottom: none; }
+  .zone-price {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--rose-deep);
+  }
+
+  /* ============ REVIEWS ============ */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .review {
+    background: var(--ivory);
+    padding: 40px 32px;
+    border-radius: 4px;
+    position: relative;
+  }
+  .review::before {
+    content: '"';
+    position: absolute;
+    top: -16px; left: 24px;
+    font-family: var(--serif);
+    font-size: 100px;
+    color: var(--rose-soft);
+    line-height: 1;
+  }
+  .review-stars {
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .review-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    font-style: italic;
+    color: var(--charcoal);
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .review-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--rose-soft);
+    display: grid;
+    place-items: center;
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--rose-deep);
+    font-weight: 500;
+  }
+  .review-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .review-date {
+    font-size: 12px;
+    color: var(--ash);
+  }
+
+  /* ============ CTA ============ */
+  .cta {
+    padding: 140px 0;
+    background: var(--charcoal);
+    color: var(--cream);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,165,165,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta::after {
+    content: '';
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(184,153,104,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-content { position: relative; z-index: 2; }
+  .cta-title {
+    font-size: clamp(40px, 5vw, 72px);
+    margin-bottom: 24px;
+  }
+  .cta-title em {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 300;
+  }
+  .cta-desc {
+    font-size: 18px;
+    color: rgba(250, 246, 241, 0.7);
+    max-width: 540px;
+    margin: 0 auto 48px;
+  }
+  .cta .btn-primary {
+    background: var(--cream);
+    color: var(--charcoal);
+  }
+  .cta .btn-primary:hover {
+    background: var(--rose);
+    color: var(--charcoal);
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    background: var(--cream-deep);
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--line);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 64px;
+  }
+  .footer-brand .logo {
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  .footer-brand p {
+    color: var(--ash);
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 360px;
+  }
+  .footer-col h4 {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li {
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: var(--ash);
+  }
+  .footer-col a { transition: color 0.2s; }
+  .footer-col a:hover { color: var(--rose-deep); }
+
+  .footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .social-icon {
+    width: 38px; height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--charcoal);
+    transition: all 0.2s;
+  }
+  .social-icon:hover {
+    background: var(--charcoal);
+    color: var(--cream);
+    border-color: var(--charcoal);
+  }
+  .social-icon svg { width: 16px; height: 16px; }
+
+  .footer-bottom {
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--ash);
+  }
+
+  /* ============ FLOATING BUTTONS ============ */
+  .floating {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .float-btn {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: white;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s;
+    position: relative;
+  }
+  .float-btn:hover {
+    transform: scale(1.08) translateY(-2px);
+  }
+  .float-btn.wa { background: #25D366; }
+  .float-btn.ig {
+    background: linear-gradient(135deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  }
+  .float-btn svg { width: 26px; height: 26px; }
+  .float-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: inherit;
+    z-index: -1;
+    animation: pulse 2s infinite;
+    opacity: 0.4;
+  }
+  @keyframes pulse {
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  /* ============ CART DRAWER ============ */
+  .cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(43, 38, 34, 0.5);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .cart-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .cart-drawer {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: 480px;
+    max-width: 100vw;
+    background: var(--ivory);
+    z-index: 201;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-drawer.open { transform: translateX(0); }
+
+  .cart-header {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cart-header h3 {
+    font-size: 28px;
+    margin: 0;
+  }
+  .cart-close {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    color: var(--charcoal);
+    transition: all 0.2s;
+  }
+  .cart-close:hover {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  .cart-close svg { width: 16px; height: 16px; }
+
+  .cart-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 32px;
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--ash);
+  }
+  .cart-empty svg {
+    width: 64px; height: 64px;
+    margin: 0 auto 24px;
+    color: var(--rose-soft);
+    stroke-width: 1;
+  }
+  .cart-empty h4 {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: var(--charcoal);
+  }
+  .cart-empty p { font-size: 14px; }
+
+  .cart-item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+  .cart-item-img {
+    width: 80px; height: 100px;
+    background: var(--cream-deep);
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+  }
+  .cart-item-info h5 {
+    font-family: var(--serif);
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .cart-item-price {
+    font-size: 14px;
+    color: var(--ash);
+    margin-bottom: 12px;
+  }
+  .qty {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .qty button {
+    width: 28px; height: 28px;
+    color: var(--charcoal);
+    transition: background 0.2s;
+  }
+  .qty button:hover { background: var(--cream); }
+  .qty span {
+    min-width: 28px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .cart-item-remove {
+    color: var(--ash);
+    transition: color 0.2s;
+    align-self: start;
+  }
+  .cart-item-remove:hover { color: var(--rose-deep); }
+  .cart-item-remove svg { width: 16px; height: 16px; }
+
+  .cart-form {
+    padding: 24px 32px;
+    border-top: 1px solid var(--line);
+    background: var(--cream);
+  }
+  .cart-form.hidden { display: none; }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+  .form-group label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-family: var(--sans);
+    font-size: 14px;
+    background: var(--ivory);
+    color: var(--charcoal);
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--rose-deep);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .payment-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .pay-option {
+    padding: 12px 8px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--ivory);
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+  }
+  .pay-option.selected {
+    border-color: var(--charcoal);
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 20px 0;
+    margin-bottom: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .cart-total-label {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+  }
+  .cart-total-value {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: var(--charcoal);
+  }
+
+  .cart-submit {
+    width: 100%;
+    padding: 18px;
+    background: var(--charcoal);
+    color: var(--cream);
+    border-radius: 100px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+  .cart-submit:hover { background: var(--rose-deep); }
+
+  .cart-wa-fallback {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--ash);
+  }
+  .cart-wa-fallback a {
+    color: var(--rose-deep);
+    text-decoration: underline;
+  }
+
+  /* ============ ANIMATIONS ============ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-image { height: 60vh; }
+    .hero-decor.top { display: none; }
+    .products { grid-template-columns: repeat(3, 1fr); }
+    .occasions-grid { grid-template-columns: repeat(2, 1fr); }
+    .occasion.large { grid-row: auto; aspect-ratio: 3/4; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-images { height: 500px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .delivery-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  @media (max-width: 640px) {
+    .container { padding: 0 20px; }
+    .nav { padding: 16px 0; }
+    .nav-phone span { display: none; }
+    .logo { font-size: 24px; }
+    .hero { min-height: auto; padding: 100px 0 60px; }
+    .hero-title { font-size: 48px; }
+    .hero-image { height: 480px; }
+    .hero-image-accent {
+      width: 130px; height: 160px;
+      bottom: -20px; left: -20px;
+    }
+    .hero-stat { right: -16px; padding: 14px 18px; }
+    .hero-stat-number { font-size: 28px; }
+    .hero-actions { flex-direction: column; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+    .trust-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 16px;
+    }
+    .trust-item:nth-child(2n) { border-right: none; }
+    .trust { padding: 56px 0; }
+    .section { padding: 72px 0; }
+    .section-header { margin-bottom: 48px; }
+    .products { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .product-name { font-size: 18px; }
+    .product-price { font-size: 20px; }
+    .product-info { padding: 16px 14px; }
+    .product-wa { opacity: 1; transform: none; }
+    .occasions-grid { grid-template-columns: 1fr; }
+    .occasion { aspect-ratio: 4/3; }
+    .occasions { padding: 72px 0; }
+    .about { padding: 72px 0; }
+    .about-images { height: 380px; }
+    .about-stats { gap: 12px; }
+    .stat-num { font-size: 32px; }
+    .delivery-card { padding: 28px 20px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .cta { padding: 80px 0; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .cart-drawer { width: 100%; }
+    .floating { bottom: 16px; right: 16px; }
+    .float-btn { width: 52px; height: 52px; }
+    .catalog-tabs { gap: 6px; }
+    .tab { padding: 10px 16px; font-size: 11px; }
+  }
+
+  /* ============ CHATBOT ============ */
+  @keyframes chatPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(43,38,34,0.45); }
+    70%  { box-shadow: 0 0 0 14px rgba(43,38,34,0); }
+    100% { box-shadow: 0 0 0 0 rgba(43,38,34,0); }
+  }
+  @keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30%           { transform: translateY(-5px); }
+  }
+
+  .float-btn.chat {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+  .float-btn.chat.pulsing {
+    animation: chatPulse 1s ease-out 3;
+  }
+  .chat-notif-dot {
+    position: absolute;
+    top: 5px; right: 5px;
+    width: 10px; height: 10px;
+    background: #e53e3e;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  .chat-panel {
+    position: fixed;
+    bottom: 96px; right: 24px;
+    width: 380px; height: 600px;
+    background: var(--ivory);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+    transform: translateY(16px) scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s ease;
+    overflow: hidden;
+  }
+  .chat-panel.open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    flex-shrink: 0;
+    background: var(--ivory);
+  }
+  .chat-avatar {
+    width: 40px; height: 40px;
+    background: var(--rose-soft);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--rose-deep);
+    flex-shrink: 0;
+  }
+  .chat-header-info { flex: 1; min-width: 0; }
+  .chat-header-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--charcoal);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .chat-header-status {
+    font-size: 11px;
+    color: #38a169;
+    margin-top: 1px;
+  }
+  .chat-close-btn {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--ash);
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .chat-close-btn:hover { background: var(--cream-deep); color: var(--charcoal); }
+  .chat-close-btn svg { width: 16px; height: 16px; }
+
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 14px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    scroll-behavior: smooth;
+  }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: var(--line); border-radius: 2px; }
+
+  .chat-msg-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .chat-msg-wrap.bot  { align-items: flex-start; }
+  .chat-msg-wrap.user { align-items: flex-end; }
+
+  .chat-bubble {
+    max-width: 80%;
+    padding: 11px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.55;
+    font-family: var(--sans);
+    word-break: break-word;
+  }
+  .chat-bubble.bot {
+    background: var(--cream);
+    color: var(--charcoal);
+    border-left: 3px solid var(--rose-deep);
+    border-radius: 4px 12px 12px 4px;
+  }
+  .chat-bubble.user {
+    background: var(--charcoal);
+    color: var(--cream);
+    border-radius: 12px 4px 4px 12px;
+  }
+  .chat-time {
+    font-size: 10px;
+    color: var(--ash);
+    margin-top: 3px;
+    padding: 0 4px;
+  }
+
+  .typing-indicator {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 11px 14px;
+    background: var(--cream);
+    border-left: 3px solid var(--rose-deep);
+    border-radius: 4px 12px 12px 4px;
+  }
+  .typing-dot {
+    width: 6px; height: 6px;
+    background: var(--ash);
+    border-radius: 50%;
+    animation: typingBounce 1.2s infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  .chat-suggestions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 2px 14px 10px;
+    flex-shrink: 0;
+  }
+  .chat-sugg-btn {
+    padding: 7px 13px;
+    border: 1px solid var(--rose-deep);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--rose-deep);
+    background: var(--ivory);
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-family: var(--sans);
+  }
+  .chat-sugg-btn:hover { background: var(--rose-deep); color: var(--ivory); }
+
+  .chat-product-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 4px 14px 12px;
+    flex-shrink: 0;
+    scrollbar-width: none;
+  }
+  .chat-product-scroll::-webkit-scrollbar { display: none; }
+  .chat-product-card {
+    min-width: 158px;
+    background: var(--cream);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+  .chat-product-img {
+    width: 100%; height: 140px;
+    object-fit: cover; display: block;
+  }
+  .chat-product-info { padding: 10px 11px 11px; }
+  .chat-product-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    line-height: 1.2;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+  }
+  .chat-product-price {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--rose-deep);
+    margin-bottom: 9px;
+  }
+  .chat-product-actions { display: flex; gap: 5px; }
+  .chat-card-btn {
+    flex: 1;
+    padding: 6px 6px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-family: var(--sans);
+    font-weight: 500;
+    transition: all 0.2s;
+    text-align: center;
+    cursor: pointer;
+  }
+  .chat-card-btn.primary { background: var(--charcoal); color: var(--cream); border: none; }
+  .chat-card-btn.primary:hover { background: var(--rose-deep); }
+  .chat-card-btn.ghost { border: 1px solid var(--charcoal); color: var(--charcoal); background: none; }
+  .chat-card-btn.ghost:hover { background: var(--charcoal); color: var(--cream); }
+
+  .chat-wa-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    background: #25D366;
+    color: white;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: var(--sans);
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    margin: 2px 14px 10px;
+    width: fit-content;
+  }
+  .chat-wa-link:hover { opacity: 0.85; color: white; }
+  .chat-wa-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  .chat-input-area {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 14px;
+    border-top: 1px solid var(--line);
+    flex-shrink: 0;
+    background: var(--ivory);
+  }
+  .chat-input {
+    flex: 1;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 9px 15px;
+    font-size: 14px;
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--charcoal);
+    outline: none;
+    transition: border-color 0.2s;
+    min-width: 0;
+  }
+  .chat-input:focus { border-color: var(--rose-deep); }
+  .chat-input::placeholder { color: var(--ash); }
+  .chat-send-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--charcoal);
+    color: var(--cream);
+    border: none;
+    display: grid;
+    place-items: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .chat-send-btn:hover:not(:disabled) { background: var(--rose-deep); }
+  .chat-send-btn:disabled { background: var(--line); color: var(--ash); cursor: not-allowed; }
+  .chat-send-btn svg { width: 15px; height: 15px; }
+
+  @media (max-width: 640px) {
+    .chat-panel {
+      bottom: 0; right: 0; left: 0;
+      width: 100%; max-width: 100vw;
+      height: calc(100vh - 32px);
+      border-radius: 16px 16px 0 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="container">
+    <nav class="nav">
+      <a href="#" class="logo">Букет<span>Astana</span></a>
+      <ul class="nav-links">
+        <li><a href="#catalog">Каталог</a></li>
+        <li><a href="#occasions">Поводы</a></li>
+        <li><a href="#delivery">Доставка</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="https://wa.me/77000000000?text=Здравствуйте! Хочу сделать заказ" class="nav-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          <span>+7 700 000 00 00</span>
+        </a>
+        <button class="cart-btn" onclick="openCart()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-toggle">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-decor top">florere</span>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Свежие цветы · Астана · 24/7</div>
+        <h1 class="hero-title">Цветы, что<br>говорят <em>за вас</em></h1>
+        <p class="hero-desc">Авторские букеты от флористов с европейским образованием. Доставка по Астане от одного часа — в любое время дня и ночи.</p>
+        <div class="hero-actions">
+          <a href="#catalog" class="btn btn-primary">
+            Смотреть каталог
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/77000000000?text=Здравствуйте! Хочу заказать букет" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.464 3.488"/>
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="hero-stat">
+          <div class="hero-stat-number">4.9</div>
+          <div class="hero-stat-label">★ 2GIS · 870 отзывов</div>
+        </div>
+        <div class="hero-image-main"></div>
+        <div class="hero-image-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="trust-title">24/7</div>
+        <div class="trust-desc">Принимаем заказы<br>круглосуточно</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="trust-title">от 60 минут</div>
+        <div class="trust-desc">Доставка по<br>Астане</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="trust-title">Фото перед</div>
+        <div class="trust-desc">отправкой<br>каждого букета</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="trust-title">Свежие</div>
+        <div class="trust-desc">Поставки из<br>Голландии и Эквадора</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="section" id="catalog">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Каталог</div>
+      <h2 class="section-title">Букеты <em>сезона</em></h2>
+      <p class="section-desc">Каждый букет собран флористом вручную из свежих цветов. Цены указаны в тенге.</p>
+    </div>
+
+    <div class="catalog-tabs reveal">
+      <button class="tab active" data-cat="all">Все</button>
+      <button class="tab" data-cat="roses">Розы</button>
+      <button class="tab" data-cat="tulips">Тюльпаны</button>
+      <button class="tab" data-cat="peonies">Пионы</button>
+      <button class="tab" data-cat="mix">Авторские</button>
+      <button class="tab" data-cat="boxes">В коробке</button>
+      <button class="tab" data-cat="chrysanthemums">Хризантемы</button>
+    </div>
+
+    <div class="products" id="products"></div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section class="occasions" id="occasions">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Поводы</div>
+      <h2 class="section-title">Букет <em>для каждого момента</em></h2>
+      <p class="section-desc">Подберём идеальный букет под ваш повод и настроение.</p>
+    </div>
+
+    <div class="occasions-grid reveal">
+      <div class="occasion large">
+        <div class="occasion-img" style="background-image: url('https://plus.unsplash.com/premium_photo-1661633184144-693cd3a0f2b0?w=900&q=85');"></div>
+        <div class="occasion-overlay"></div>
+        <div class="occasion-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="occasion-content">
+          <div class="occasion-meta">от 18 000 ₸</div>
+          <div class="occasion-title">Свадьба</div>
+        </div>
+      </div>
+      <div class="occasion">
+        <div class="occasion-img" style="background-image: url('https://images.unsplash.com/photo-1656683668427-8bf0e45b1b39?w=600&q=85');"></div>
+        <div class="occasion-overlay"></div>
+        <div class="occasion-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="occasion-content">
+          <div class="occasion-meta">от 8 000 ₸</div>
+          <div class="occasion-title">День рождения</div>
+        </div>
+      </div>
+      <div class="occasion">
+        <div class="occasion-img" style="background-image: url('https://images.unsplash.com/photo-1599791095997-5cf38bb5ff69?w=600&q=85');"></div>
+        <div class="occasion-overlay"></div>
+        <div class="occasion-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="occasion-content">
+          <div class="occasion-meta">от 12 000 ₸</div>
+          <div class="occasion-title">Юбилей</div>
+        </div>
+      </div>
+      <div class="occasion">
+        <div class="occasion-img" style="background-image: url('https://images.unsplash.com/photo-1523693916903-027d144a2b7d?w=600&q=85');"></div>
+        <div class="occasion-overlay"></div>
+        <div class="occasion-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="occasion-content">
+          <div class="occasion-meta">от 6 000 ₸</div>
+          <div class="occasion-title">8 марта</div>
+        </div>
+      </div>
+      <div class="occasion">
+        <div class="occasion-img" style="background-image: url('https://images.unsplash.com/photo-1649542112491-987ce6bf5546?w=600&q=85');"></div>
+        <div class="occasion-overlay"></div>
+        <div class="occasion-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </div>
+        <div class="occasion-content">
+          <div class="occasion-meta">от 5 000 ₸</div>
+          <div class="occasion-title">Без повода</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="delivery" id="delivery">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Доставка и оплата</div>
+      <h2 class="section-title">Привезём <em>точно в срок</em></h2>
+      <p class="section-desc">Доставка по Астане в удобный для вас 3-часовой интервал. Также возможна доставка в любую точку Казахстана.</p>
+    </div>
+
+    <div class="delivery-grid reveal">
+      <div class="delivery-card">
+        <h3>Время доставки</h3>
+        <div class="time-slots">
+          <div class="slot">06:00 — 09:00</div>
+          <div class="slot">09:00 — 12:00</div>
+          <div class="slot">12:00 — 15:00</div>
+          <div class="slot">15:00 — 18:00</div>
+          <div class="slot">18:00 — 21:00</div>
+          <div class="slot">21:00 — 00:00</div>
+        </div>
+        <p style="font-size: 13px; color: var(--ash); line-height: 1.6;">Заказы принимаются круглосуточно. Срочная доставка — от 60 минут после оплаты.</p>
+      </div>
+
+      <div class="delivery-card">
+        <h3>Стоимость по зонам</h3>
+        <ul class="delivery-zones">
+          <li>
+            <span>Левый берег</span>
+            <span class="zone-price">2 500 ₸</span>
+          </li>
+          <li>
+            <span>Правый берег</span>
+            <span class="zone-price">3 000 ₸</span>
+          </li>
+          <li>
+            <span>Загородные посёлки</span>
+            <span class="zone-price">от 4 000 ₸</span>
+          </li>
+          <li>
+            <span>При заказе от 25 000 ₸</span>
+            <span class="zone-price" style="color: var(--sage);">Бесплатно</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images reveal">
+        <div class="about-img-1"></div>
+        <div class="about-img-2"></div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-eyebrow">О нас</div>
+        <h2>Цветы — это <em>искусство</em> внимания</h2>
+        <p>Мы — небольшая флористическая мастерская в Астане, где каждый букет собирается вручную. Работаем напрямую с поставщиками из Голландии, Эквадора и Колумбии, поэтому в наших букетах всегда самые свежие цветы.</p>
+        <p>За четыре года мы собрали больше 8 000 букетов и научились главному: важна не цена и не размер, а внимание к деталям и эмоция, которую букет передаёт.</p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-num">4 года</div>
+            <div class="stat-label">на рынке</div>
+          </div>
+          <div>
+            <div class="stat-num">8 000+</div>
+            <div class="stat-label">букетов</div>
+          </div>
+          <div>
+            <div class="stat-num">4.9 ★</div>
+            <div class="stat-label">рейтинг 2GIS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Отзывы</div>
+      <h2 class="section-title">Что <em>говорят</em> о нас</h2>
+    </div>
+
+    <div class="reviews-grid reveal">
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Заказывала букет на день рождения мамы. Привезли точно в срок, цветы свежайшие, упаковка просто wow. Мама была в восторге.</p>
+        <div class="review-author">
+          <div class="review-avatar">А</div>
+          <div>
+            <div class="review-name">Айгерим К.</div>
+            <div class="review-date">2GIS · 12 апреля 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Делал заказ ночью через WhatsApp — ответили через минуту. Букет привезли утром на работу к жене. Лучший сервис в городе.</p>
+        <div class="review-author">
+          <div class="review-avatar">Д</div>
+          <div>
+            <div class="review-name">Данияр М.</div>
+            <div class="review-date">Instagram · 3 апреля 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="review">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Постоянно заказываю здесь цветы для офиса. Девочки очень внимательные, всегда подскажут что выбрать и сделают красиво.</p>
+        <div class="review-author">
+          <div class="review-avatar">М</div>
+          <div>
+            <div class="review-name">Мадина Т.</div>
+            <div class="review-date">2GIS · 28 марта 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2 class="cta-title">Удивите того,<br>кто <em>дорог</em></h2>
+      <p class="cta-desc">Свежие цветы и быстрая доставка — даже если вы вспомнили о празднике в последний момент.</p>
+      <a href="#catalog" class="btn btn-primary">
+        Выбрать букет
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacts">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">Букет<span>Astana</span></a>
+        <p>Свежие авторские букеты с доставкой по Астане. Работаем 24/7 без выходных и праздников.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/77000000000" class="social-icon" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+          </a>
+          <a href="tel:+77000000000" class="social-icon" aria-label="Phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Каталог</h4>
+        <ul>
+          <li><a href="#">Розы</a></li>
+          <li><a href="#">Тюльпаны</a></li>
+          <li><a href="#">Пионы</a></li>
+          <li><a href="#">Авторские</a></li>
+          <li><a href="#">В коробке</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Информация</h4>
+        <ul>
+          <li><a href="#delivery">Доставка</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#">Оплата</a></li>
+          <li><a href="#">Возврат</a></li>
+          <li><a href="#">Политика</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <ul>
+          <li>+7 700 000 00 00</li>
+          <li>info@buket-astana.kz</li>
+          <li>пр. Мангилик Ел, 45</li>
+          <li>Астана, Казахстан</li>
+          <li>Работаем 24/7</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Букет Astana. Все права защищены. БИН 250000000000</div>
+      <div>Принимаем: Kaspi · Visa · Mastercard · Наличные</div>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING -->
+<div class="floating">
+  <button class="float-btn chat" id="chatToggle" aria-label="Открыть чат">
+    <span class="chat-notif-dot" id="chatNotifDot"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  </button>
+  <a href="https://instagram.com" class="float-btn ig" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+  <a href="https://wa.me/77000000000?text=Здравствуйте! Хочу заказать букет" class="float-btn wa" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+  </a>
+</div>
+
+<!-- CHATBOT PANEL -->
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-avatar">Ф</div>
+    <div class="chat-header-info">
+      <div class="chat-header-name">Флорист Асем</div>
+      <div class="chat-header-status">● онлайн</div>
+    </div>
+    <button class="chat-close-btn" id="chatClose" aria-label="Закрыть чат">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-suggestions" id="chatSuggestions"></div>
+  <div class="chat-input-area">
+    <input type="text" class="chat-input" id="chatInput" placeholder="Напишите сообщение...">
+    <button class="chat-send-btn" id="chatSendBtn" disabled aria-label="Отправить">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Ваш заказ</h3>
+    <button class="cart-close" onclick="closeCart()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-form hidden" id="cartForm">
+    <div class="form-group">
+      <label>Ваше имя</label>
+      <input type="text" id="customerName" placeholder="Иван Иванов">
+    </div>
+    <div class="form-group">
+      <label>Телефон</label>
+      <input type="tel" id="customerPhone" placeholder="+7 ___ ___ __ __">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Дата</label>
+        <input type="date" id="deliveryDate">
+      </div>
+      <div class="form-group">
+        <label>Время</label>
+        <select id="deliveryTime">
+          <option>06:00 — 09:00</option>
+          <option>09:00 — 12:00</option>
+          <option>12:00 — 15:00</option>
+          <option>15:00 — 18:00</option>
+          <option>18:00 — 21:00</option>
+          <option>21:00 — 00:00</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Адрес доставки</label>
+      <input type="text" id="deliveryAddress" placeholder="ул. Мангилик Ел, 45, кв. 12">
+    </div>
+    <div class="form-group">
+      <label>Комментарий (необязательно)</label>
+      <textarea id="comment" rows="2" placeholder="Открытка, время вручения и т.д."></textarea>
+    </div>
+    <div class="form-group">
+      <label>Способ оплаты</label>
+      <div class="payment-options">
+        <div class="pay-option selected" data-pay="Kaspi">Kaspi</div>
+        <div class="pay-option" data-pay="Карта">Карта</div>
+        <div class="pay-option" data-pay="Наличные">Наличные</div>
+      </div>
+    </div>
+    <div class="cart-total">
+      <span class="cart-total-label">Итого</span>
+      <span class="cart-total-value" id="cartTotal">0 ₸</span>
+    </div>
+    <button class="cart-submit" onclick="submitOrder()">Оформить заказ</button>
+    <div class="cart-wa-fallback">
+      или <a href="#" onclick="orderViaWhatsApp(); return false;">оформить через WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ================================================================
+  // GOOGLE SHEETS INTEGRATION
+  // Step 1: Open your Google Sheet
+  // Step 2: File → Share → Publish to web → Sheet1 → CSV → Publish
+  // Step 3: Copy the link and paste it below replacing the placeholder
+  // ================================================================
+  const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR5lFi08pRoNH9UNmh_NMALynaRaQdYXBikv_8zl1tustCj38VA12uS9di-m1QbTYEtfT8p9Uddtplp/pub?output=csv';
+
+  // Live products — filled by loadProducts() from Google Sheets
+  let products = [];
+
+  // ============ FALLBACK / HARDCODED DATA ============
+  // Used automatically if the sheet fails to load
+  const _fallback = [
+    {id: 1,  name: "Утренняя роса",          cat: "roses",         desc: "пионовидная роза",          price: 960,   defaultQty: 25,  unit: "роза",    badge: "ХИТ",                       img: "https://images.unsplash.com/photo-1746822132410-0aa489a964f2?w=600&q=85"},
+    {id: 2,  name: "Тюльпаны Голландия",     cat: "tulips",        desc: "тюльпан, микс",              price: 295,   defaultQty: 51,  unit: "тюльпан",                                             img: "https://plus.unsplash.com/premium_photo-1676400614009-3b230ef8be6d?w=600&q=85"},
+    {id: 3,  name: "Розовое облако",          cat: "peonies",       desc: "розовый пион",               price: 3000,  defaultQty: 9,   unit: "пион",    badge: "NEW", badgeNew: true,              img: "https://images.unsplash.com/photo-1656683668427-8bf0e45b1b39?w=600&q=85"},
+    {id: 4,  name: "Французская нежность",   cat: "mix",           desc: "авторский букет",             price: 18500, defaultQty: 1,   unit: "букет",                                               img: "https://plus.unsplash.com/premium_photo-1676475964992-6404b8db0b53?w=600&q=85"},
+    {id: 5,  name: "Roses",                   cat: "roses",         desc: "белая роза 60 см",            price: 680,   defaultQty: 31,  unit: "роза",                                                img: "https://images.unsplash.com/photo-1649542112491-987ce6bf5546?w=600&q=85"},
+    {id: 6,  name: "Весеннее настроение",     cat: "tulips",        desc: "розовый тюльпан",             price: 260,   defaultQty: 75,  unit: "тюльпан", badge: "ХИТ",                              img: "https://plus.unsplash.com/premium_photo-1676272769520-e0b5af99c509?w=600&q=85"},
+    {id: 7,  name: "Шкатулка Provence",       cat: "boxes",         desc: "розы и эустома в коробке",    price: 22000, defaultQty: 1,   unit: "коробка",                                             img: "https://images.unsplash.com/photo-1652017804486-babfacd5945a?w=600&q=85"},
+    {id: 8,  name: "Сад Моне",                cat: "mix",           desc: "гортензии и пионовидные розы",price: 32000, defaultQty: 1,   unit: "букет",   oldPrice: 38000,                            img: "https://images.unsplash.com/photo-1494336877155-7fb9c6984f0a?w=600&q=85"},
+    {id: 9,  name: "Красная страсть",         cat: "roses",         desc: "красная роза 70 см",          price: 700,   defaultQty: 51,  unit: "роза",                                                img: "https://plus.unsplash.com/premium_photo-1673809129994-258a489a5f09?w=600&q=85"},
+    {id: 10, name: "Букет невесты",           cat: "mix",           desc: "авторская композиция",        price: 26000, defaultQty: 1,   unit: "букет",   badge: "NEW", badgeNew: true,               img: "https://plus.unsplash.com/premium_photo-1661633184144-693cd3a0f2b0?w=600&q=85"},
+    {id: 11, name: "Розы в шляпной коробке",  cat: "boxes",         desc: "кустовая роза",               price: 760,   defaultQty: 25,  unit: "роза",                                                img: "https://images.unsplash.com/photo-1523693916903-027d144a2b7d?w=600&q=85"},
+    {id: 12, name: "Пионовый сон",            cat: "peonies",       desc: "коралловый пион",             price: 2400,  defaultQty: 15,  unit: "пион",                                                img: "https://plus.unsplash.com/premium_photo-1661636620747-9864306ee1e3?w=600&q=85"},
+    {id: 13, name: "Алые паруса",             cat: "roses",         desc: "красная роза 60 см",          price: 720,   defaultQty: 25,  unit: "роза",                                                img: "https://images.unsplash.com/photo-1710505236383-897c05293015?w=600&q=85"},
+    {id: 14, name: "Персиковый бархат",       cat: "roses",         desc: "персиковая роза Эквадор",     price: 970,   defaultQty: 15,  unit: "роза",    badge: "NEW", badgeNew: true,               img: "https://plus.unsplash.com/premium_photo-1706096976753-d307f6f322d1?w=600&q=85"},
+    {id: 15, name: "Нежность весны",          cat: "tulips",        desc: "белый и розовый тюльпан",     price: 270,   defaultQty: 101, unit: "тюльпан", badge: "ХИТ",                              img: "https://images.unsplash.com/photo-1589994160839-163cd867cfe8?w=600&q=85"},
+    {id: 16, name: "Жёлтый май",              cat: "tulips",        desc: "жёлтый тюльпан",              price: 265,   defaultQty: 51,  unit: "тюльпан",                                             img: "https://images.unsplash.com/photo-1650298306610-1d8e8d58ad4a?w=600&q=85"},
+    {id: 17, name: "Белое облако",            cat: "chrysanthemums",desc: "кустовые хризантемы, моно",   price: 9500,  defaultQty: 1,   unit: "букет",                                               img: "https://images.unsplash.com/photo-1732331428518-a921dbea8860?w=600&q=85"},
+    {id: 18, name: "Солнечный день",          cat: "chrysanthemums",desc: "жёлтые и белые хризантемы",   price: 11000, defaultQty: 1,   unit: "букет",   badge: "NEW", badgeNew: true,               img: "https://images.unsplash.com/photo-1660728581212-fdbfc13fd08a?w=600&q=85"},
+    {id: 19, name: "Фиолетовый бриз",        cat: "chrysanthemums",desc: "фиолетовые кустовые хризантемы",price:12500, defaultQty: 1,   unit: "букет",                                               img: "https://images.unsplash.com/photo-1660728581287-832765e6e5e7?w=600&q=85"},
+  ];
+
+  let currentCat = 'all';
+  let cart = [];
+  const selectedQty = {}; // tracks per-product qty chosen on the card
+
+  // ============ GOOGLE SHEETS LOADER ============
+
+  // Parses a single CSV line respecting quoted commas
+  function parseCSVLine(line) {
+    const cols = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i];
+      if (c === '"') {
+        if (inQ && line[i + 1] === '"') { cur += '"'; i++; }
+        else inQ = !inQ;
+      } else if (c === ',' && !inQ) {
+        cols.push(cur); cur = '';
+      } else cur += c;
+    }
+    cols.push(cur);
+    return cols;
+  }
+
+  // Converts raw CSV text → array of plain objects keyed by header row
+  function parseCSV(text) {
+    const lines = text.trim().split('\n');
+    const headers = parseCSVLine(lines[0]).map(h => h.trim());
+    return lines.slice(1)
+      .filter(l => l.trim())
+      .map(line => {
+        const vals = parseCSVLine(line);
+        const obj = {};
+        headers.forEach((h, i) => { obj[h] = (vals[i] || '').trim(); });
+        return obj;
+      });
+  }
+
+  // Maps a sheet row to the product format the site expects
+  function rowToProduct(row) {
+    if (!row.id || !row.name) return null;
+    const inStockRaw = (row.inStock || '').toLowerCase();
+    return {
+      id:         parseInt(row.id),
+      name:       row.name,
+      cat:        row.cat   || 'mix',
+      desc:       row.desc  || '',
+      price:      parseFloat(row.price)      || 0,
+      defaultQty: parseInt(row.defaultQty)   || 1,
+      unit:       row.unit  || 'шт',
+      badge:      row.badge || null,
+      badgeNew:   (row.badge || '').toUpperCase() === 'NEW',
+      oldPrice:   row.oldPrice ? parseFloat(row.oldPrice) : null,
+      img:        row.img   || '',
+      // inStock: leave empty / write "true" / "1" / "да" = in stock
+      //          write "false" / "0" / "нет"             = out of stock
+      inStock: !['false', '0', 'нет', 'no'].includes(inStockRaw)
+    };
+  }
+
+  async function loadProducts() {
+    const grid = document.getElementById('products');
+    grid.innerHTML = `
+      <div class="products-loading">
+        <div class="loading-spinner"></div>
+        <span>Загружаем каталог…</span>
+      </div>`;
+
+    try {
+      if (!SHEET_URL || SHEET_URL.includes('PASTE_YOUR')) throw new Error('no-url');
+      const res = await fetch(SHEET_URL + (SHEET_URL.includes('?') ? '&' : '?') + '_=' + Date.now());
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      const rows = parseCSV(text).map(rowToProduct).filter(Boolean);
+      if (rows.length === 0) throw new Error('empty');
+      products = rows;
+      renderProducts();
+    } catch (err) {
+      console.warn('Google Sheets load failed:', err.message, '— using fallback data');
+      // Fall back to hardcoded data so the site always works
+      products = _fallback;
+      if (err.message === 'no-url') {
+        // Sheet URL not set yet — silently show hardcoded data
+        renderProducts();
+      } else {
+        grid.innerHTML = `
+          <div class="products-loading">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <circle cx="12" cy="16" r="0.5" fill="currentColor"/>
+            </svg>
+            <p style="text-align:center">Не удалось загрузить данные из таблицы.<br>Показываем последние сохранённые данные.</p>
+            <button onclick="loadProducts()">Обновить</button>
+          </div>`;
+        // Still show hardcoded products below the error after a short delay
+        setTimeout(renderProducts, 1200);
+      }
+    }
+  }
+
+  // ============ RENDER PRODUCTS ============
+  function renderProducts() {
+    const grid = document.getElementById('products');
+    const filtered = currentCat === 'all' ? products : products.filter(p => p.cat === currentCat);
+    grid.innerHTML = filtered.map(p => `
+      <article class="product${p.inStock === false ? ' out-of-stock' : ''}" data-id="${p.id}">
+        <div class="product-image">
+          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          ${p.badge ? `<div class="product-badge ${p.badgeNew ? 'new' : ''}">${p.badge}</div>` : ''}
+          ${p.inStock === false ? `<div class="out-of-stock-overlay"><span>Нет в наличии</span></div>` : ''}
+          <a href="#" class="product-wa" aria-label="WhatsApp" onclick="event.stopPropagation(); openWA(${p.id}); return false;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+          </a>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">${p.name}</h3>
+          <div class="product-meta" id="desc-${p.id}">${(selectedQty[p.id] || p.defaultQty)} ${p.unit}</div>
+          <div class="product-bottom">
+            <div class="product-price-wrap">
+              <div class="product-price" id="price-${p.id}">
+                ${p.oldPrice ? `<span class="product-price-old" id="oldprice-${p.id}">${(p.oldPrice * (selectedQty[p.id] || p.defaultQty)).toLocaleString('ru-RU')} ₸</span>` : ''}
+                <span id="total-${p.id}">${(p.price * (selectedQty[p.id] || p.defaultQty)).toLocaleString('ru-RU')} ₸</span>
+              </div>
+              ${p.defaultQty > 1 ? `<div class="product-unit-price">${p.price.toLocaleString('ru-RU')} ₸ / ${p.unit}</div>` : ''}
+            </div>
+            <div class="product-controls${p.inStock === false ? ' out-of-stock' : ''}">
+              <div class="qty" onclick="event.stopPropagation()">
+                <button onclick="changeProductQty(${p.id}, -1)"${p.inStock === false ? ' disabled' : ''}>−</button>
+                <span id="qty-${p.id}">${selectedQty[p.id] || p.defaultQty}</span>
+                <button onclick="changeProductQty(${p.id}, 1)"${p.inStock === false ? ' disabled' : ''}>+</button>
+              </div>
+              <button class="add-btn" onclick="addToCart(${p.id})" aria-label="В корзину"${p.inStock === false ? ' disabled' : ''}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  // ============ TABS ============
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentCat = tab.dataset.cat;
+      renderProducts();
+    });
+  });
+
+  // ============ PRODUCT QTY STEPPER ============
+  function changeProductQty(id, delta) {
+    const p = products.find(p => p.id === id);
+    const current = selectedQty[id] || p.defaultQty;
+    const next = Math.max(1, current + delta);
+    selectedQty[id] = next;
+
+    // update qty display
+    const qtyEl = document.getElementById('qty-' + id);
+    if (qtyEl) qtyEl.textContent = next;
+
+    // update total price display
+    const totalEl = document.getElementById('total-' + id);
+    if (totalEl) totalEl.textContent = (p.price * next).toLocaleString('ru-RU') + ' ₸';
+
+    // update old price if present
+    if (p.oldPrice) {
+      const oldEl = document.getElementById('oldprice-' + id);
+      if (oldEl) oldEl.textContent = (p.oldPrice * next).toLocaleString('ru-RU') + ' ₸';
+    }
+
+    // update desc line
+    const descEl = document.getElementById('desc-' + id);
+    if (descEl) descEl.textContent = next + ' ' + p.unit;
+  }
+
+  function openWA(id) {
+    const p = products.find(p => p.id === id);
+    const qty = selectedQty[id] || p.defaultQty;
+    const total = (p.price * qty).toLocaleString('ru-RU');
+    window.open(
+      'https://wa.me/77000000000?text=' +
+      encodeURIComponent('Здравствуйте! Интересует букет: ' + p.name + ' — ' + qty + ' ' + p.unit + ' (' + total + ' ₸)'),
+      '_blank'
+    );
+  }
+
+  // ============ CART ============
+  function addToCart(id) {
+    const product = products.find(p => p.id === id);
+    const qty = selectedQty[id] || product.defaultQty;
+    const existing = cart.find(item => item.id === id);
+    if (existing) existing.qty += qty;
+    else cart.push({...product, qty: qty});
+    updateCart();
+    openCart();
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
+    updateCart();
+  }
+
+  function changeQty(id, delta) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) removeFromCart(id);
+    else updateCart();
+  }
+
+  function updateCart() {
+    const body = document.getElementById('cartBody');
+    const form = document.getElementById('cartForm');
+    const count = document.getElementById('cartCount');
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const itemCount = cart.reduce((sum, item) => sum + item.qty, 0);
+
+    count.textContent = itemCount;
+    if (itemCount > 0) count.classList.add('active');
+    else count.classList.remove('active');
+
+    if (cart.length === 0) {
+      body.innerHTML = `
+        <div class="cart-empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+          <h4>Корзина пуста</h4>
+          <p>Добавьте букеты из каталога</p>
+        </div>
+      `;
+      form.classList.add('hidden');
+    } else {
+      body.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <div class="cart-item-img" style="background-image: url('${item.img}');"></div>
+          <div class="cart-item-info">
+            <h5>${item.name}</h5>
+            <div class="cart-item-price">${(item.price * item.qty).toLocaleString('ru-RU')} ₸</div>
+            <div class="qty">
+              <button onclick="changeQty(${item.id}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${item.id}, 1)">+</button>
+            </div>
+          </div>
+          <button class="cart-item-remove" onclick="removeFromCart(${item.id})" aria-label="Удалить">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 01-2 2H9a2 2 0 01-2-2L5 6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+          </button>
+        </div>
+      `).join('');
+      form.classList.remove('hidden');
+      document.getElementById('cartTotal').textContent = total.toLocaleString('ru-RU') + ' ₸';
+    }
+  }
+
+  function openCart() {
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartDrawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartDrawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // payment selection
+  document.querySelectorAll('.pay-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+    });
+  });
+
+  function buildOrderMessage() {
+    const name = document.getElementById('customerName').value || 'не указано';
+    const phone = document.getElementById('customerPhone').value || 'не указан';
+    const date = document.getElementById('deliveryDate').value || 'не указана';
+    const time = document.getElementById('deliveryTime').value;
+    const address = document.getElementById('deliveryAddress').value || 'не указан';
+    const comment = document.getElementById('comment').value || '—';
+    const pay = document.querySelector('.pay-option.selected')?.dataset.pay || 'не выбран';
+    const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+
+    let msg = `🌸 НОВЫЙ ЗАКАЗ\n\n`;
+    msg += `👤 Клиент: ${name}\n📞 Телефон: ${phone}\n\n`;
+    msg += `📦 ЗАКАЗ:\n`;
+    cart.forEach(item => {
+      msg += `• ${item.name} × ${item.qty} = ${(item.price * item.qty).toLocaleString('ru-RU')} ₸\n`;
+    });
+    msg += `\n💰 Итого: ${total.toLocaleString('ru-RU')} ₸\n\n`;
+    msg += `🚚 Доставка: ${date}, ${time}\n📍 Адрес: ${address}\n💳 Оплата: ${pay}\n`;
+    if (comment !== '—') msg += `\n💬 Комментарий: ${comment}`;
+    return msg;
+  }
+
+  function orderViaWhatsApp() {
+    if (cart.length === 0) {
+      alert('Корзина пуста');
+      return;
+    }
+    const msg = buildOrderMessage();
+    window.open(`https://wa.me/77000000000?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  function submitOrder() {
+    if (cart.length === 0) {
+      alert('Корзина пуста');
+      return;
+    }
+    const phone = document.getElementById('customerPhone').value;
+    const name = document.getElementById('customerName').value;
+    if (!phone || !name) {
+      alert('Пожалуйста, укажите имя и телефон');
+      return;
+    }
+    // In production: send to backend / Google Sheets
+    const msg = buildOrderMessage();
+    window.open(`https://wa.me/77000000000?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // ============ CHATBOT ============
+  (function () {
+    const panel      = document.getElementById('chatPanel');
+    const toggleBtn  = document.getElementById('chatToggle');
+    const notifDot   = document.getElementById('chatNotifDot');
+    const messagesEl = document.getElementById('chatMessages');
+    const suggestEl  = document.getElementById('chatSuggestions');
+    const inputEl    = document.getElementById('chatInput');
+    const sendBtn    = document.getElementById('chatSendBtn');
+
+    let isOpen = false, hasOpened = false;
+    let unmatchedCount = 0, idleSent = false, idleTimer = null;
+
+    // ---- open / close ----
+    function openChat() {
+      isOpen = true;
+      panel.classList.add('open');
+      if (!hasOpened) {
+        hasOpened = true;
+        notifDot.style.display = 'none';
+        startWelcomeFlow();
+      }
+      resetIdle();
+    }
+    function closeChat() {
+      isOpen = false;
+      panel.classList.remove('open');
+      clearTimeout(idleTimer);
+    }
+
+    toggleBtn.addEventListener('click', () => isOpen ? closeChat() : openChat());
+    document.getElementById('chatClose').addEventListener('click', closeChat);
+
+    // pulse on load
+    setTimeout(() => {
+      toggleBtn.classList.add('pulsing');
+      setTimeout(() => toggleBtn.classList.remove('pulsing'), 3200);
+    }, 1200);
+
+    // ---- idle ----
+    function resetIdle() {
+      clearTimeout(idleTimer);
+      if (idleSent) return;
+      idleTimer = setTimeout(() => {
+        if (isOpen && !idleSent) {
+          idleSent = true;
+          addBotMsg('Я всё ещё здесь, если у вас появятся вопросы 🌸');
+        }
+      }, 30000);
+    }
+
+    // ---- helpers ----
+    function now() {
+      return new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+    }
+    function scroll() {
+      requestAnimationFrame(() => { messagesEl.scrollTop = messagesEl.scrollHeight; });
+    }
+    function clearSuggestions() { suggestEl.innerHTML = ''; }
+
+    function addBotMsg(text) {
+      const w = document.createElement('div');
+      w.className = 'chat-msg-wrap bot';
+      w.innerHTML = `<div class="chat-bubble bot">${text.replace(/\n/g, '<br>')}</div><span class="chat-time">${now()}</span>`;
+      messagesEl.appendChild(w);
+      scroll();
+    }
+    function addUserMsg(text) {
+      clearSuggestions();
+      const w = document.createElement('div');
+      w.className = 'chat-msg-wrap user';
+      w.innerHTML = `<div class="chat-bubble user">${text}</div><span class="chat-time">${now()}</span>`;
+      messagesEl.appendChild(w);
+      scroll();
+    }
+
+    function showTyping() {
+      const w = document.createElement('div');
+      w.className = 'chat-msg-wrap bot _typing';
+      w.innerHTML = `<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`;
+      messagesEl.appendChild(w);
+      scroll();
+      return w;
+    }
+    function removeTyping() {
+      const t = messagesEl.querySelector('._typing');
+      if (t) t.remove();
+    }
+
+    function botMsg(text, delay) {
+      return new Promise(res => {
+        const t = showTyping();
+        setTimeout(() => { removeTyping(); addBotMsg(text); res(); }, delay || 900);
+      });
+    }
+
+    function addSuggestions(list) {
+      clearSuggestions();
+      list.forEach(b => {
+        const el = document.createElement('button');
+        el.className = 'chat-sugg-btn';
+        el.textContent = b.label;
+        el.addEventListener('click', () => { addUserMsg(b.label); clearSuggestions(); b.action && b.action(); });
+        suggestEl.appendChild(el);
+      });
+      scroll();
+    }
+
+    function addWALink(label, url) {
+      const a = document.createElement('a');
+      a.className = 'chat-wa-link';
+      a.href = url; a.target = '_blank';
+      a.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>${label}`;
+      messagesEl.appendChild(a);
+      scroll();
+    }
+
+    function showProductCards(list) {
+      const row = document.createElement('div');
+      row.className = 'chat-product-scroll';
+      list.forEach(p => {
+        const card = document.createElement('div');
+        card.className = 'chat-product-card';
+        card.innerHTML = `
+          <img class="chat-product-img" src="${p.img}" alt="${p.name}" loading="lazy">
+          <div class="chat-product-info">
+            <div class="chat-product-name">${p.name}</div>
+            <div class="chat-product-price">${p.price.toLocaleString('ru-RU')} ₸</div>
+            <div class="chat-product-actions">
+              <button class="chat-card-btn primary">Заказать</button>
+              <button class="chat-card-btn ghost">Подробнее</button>
+            </div>
+          </div>`;
+        card.querySelector('.chat-card-btn.primary').addEventListener('click', () => orderProduct(p));
+        card.querySelector('.chat-card-btn.ghost').addEventListener('click', () => {
+          closeChat();
+          document.getElementById('catalog') && document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
+        });
+        row.appendChild(card);
+      });
+      messagesEl.appendChild(row);
+      scroll();
+    }
+
+    // ---- main menu ----
+    const mainMenu = () => [
+      { label: 'Хочу выбрать букет',       action: flowPickBouquet },
+      { label: 'Узнать про доставку',       action: flowDelivery },
+      { label: 'Часы работы',               action: flowHours },
+      { label: 'Связаться с флористом',     action: flowContact },
+    ];
+
+    // ---- flows ----
+    async function startWelcomeFlow() {
+      await botMsg('Здравствуйте! 🌸 Я Асем, флорист Букет Astana. Помогу подобрать букет или отвечу на любые вопросы.', 1000);
+      await botMsg('С чего начнём?', 800);
+      addSuggestions(mainMenu());
+    }
+
+    async function flowPickBouquet() {
+      await botMsg('Прекрасно! Какой повод?', 800);
+      addSuggestions([
+        { label: 'День рождения', action: () => flowBudget('День рождения', 'roses') },
+        { label: 'Романтика',     action: () => flowBudget('Романтика',     'roses') },
+        { label: '8 марта',       action: () => flowBudget('8 марта',       'tulips') },
+        { label: 'Юбилей',        action: () => flowBudget('Юбилей',        'mix') },
+        { label: 'Свадьба',       action: () => flowBudget('Свадьба',       'mix') },
+        { label: 'Просто так',    action: () => flowBudget('Просто так',    'peonies') },
+      ]);
+    }
+
+    async function flowBudget(occasion, cat) {
+      await botMsg('Какой бюджет рассматриваете?', 800);
+      addSuggestions([
+        { label: 'До 10 000 ₸',          action: () => flowProducts(occasion, cat, 0, 10000) },
+        { label: '10 000 — 20 000 ₸',    action: () => flowProducts(occasion, cat, 10000, 20000) },
+        { label: '20 000 — 35 000 ₸',    action: () => flowProducts(occasion, cat, 20000, 35000) },
+        { label: 'Свыше 35 000 ₸',       action: () => flowProducts(occasion, cat, 35000, Infinity) },
+      ]);
+    }
+
+    async function flowProducts(occasion, cat, minP, maxP) {
+      await botMsg(`Подбираю лучшие варианты для «${occasion}»...`, 1300);
+      let list = products.filter(p => p.cat === cat && p.price >= minP && p.price <= maxP);
+      if (!list.length) list = products.filter(p => p.cat === cat);
+      if (!list.length) list = products.slice(0, 3);
+      list = list.slice(0, 3);
+      addBotMsg('Вот подходящие варианты:');
+      showProductCards(list);
+      addSuggestions([
+        { label: 'Другой повод',   action: flowPickBouquet },
+        { label: 'Другой бюджет', action: () => flowBudget(occasion, cat) },
+      ]);
+    }
+
+    async function orderProduct(p) {
+      clearSuggestions();
+      await botMsg(`Отличный выбор! «${p.name}» — ${p.price.toLocaleString('ru-RU')} ₸. Чтобы оформить заказ, переведу вас к флористу в WhatsApp с уже заполненным сообщением.`, 1100);
+      const msg = `Здравствуйте! Хочу заказать: ${p.name} — ${p.price.toLocaleString('ru-RU')} ₸ (из чата на сайте)`;
+      addWALink('Перейти в WhatsApp', `https://wa.me/77000000000?text=${encodeURIComponent(msg)}`);
+    }
+
+    async function flowDelivery() {
+      await botMsg('Доставляем по Астане в 3-часовых интервалах:', 800);
+      await botMsg('📍 Левый берег — 2 500 ₸\n📍 Правый берег — 3 000 ₸\n📍 Загородные посёлки — от 4 000 ₸\n\n✨ Бесплатно при заказе от 25 000 ₸\n⏱ Срочная доставка от 60 минут', 1300);
+      addSuggestions([
+        { label: 'Выбрать букет',          action: flowPickBouquet },
+        { label: 'Узнать про оплату',      action: flowPayment },
+        { label: 'Связаться с флористом',  action: flowContact },
+      ]);
+    }
+
+    async function flowHours() {
+      await botMsg('Мы работаем 24/7 — без выходных и праздников. 🌙 Заказы принимаем круглосуточно через сайт, WhatsApp и в чате.', 1000);
+      addSuggestions([
+        { label: 'Выбрать букет',     action: flowPickBouquet },
+        { label: 'Узнать про доставку', action: flowDelivery },
+      ]);
+    }
+
+    async function flowContact() {
+      await botMsg('Конечно! Сейчас переведу вас на флориста в WhatsApp. Опишите коротко, что вы ищете, и мы поможем подобрать идеальный букет.', 1000);
+      addWALink('Открыть WhatsApp', 'https://wa.me/77000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20%D1%87%D0%B0%D1%82%D0%B0%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82%D0%B5.');
+    }
+
+    async function flowPayment() {
+      await botMsg('Принимаем оплату любым удобным способом: Kaspi, банковская карта, наличные курьеру при получении. ✅', 1000);
+      addSuggestions([
+        { label: 'Выбрать букет',       action: flowPickBouquet },
+        { label: 'Узнать про доставку', action: flowDelivery },
+      ]);
+    }
+
+    // ---- keyword matching ----
+    function clean(t) { return t.toLowerCase().replace(/[^\wа-яёa-z\s]/gi, ''); }
+    function has(t) {
+      const kws = Array.prototype.slice.call(arguments, 1);
+      return kws.some(k => t.includes(k));
+    }
+
+    // ---- flower calculator ----
+    const STEM_FLOWERS = [
+      { keys: ['роз'],       forms: ['роза','розы','роз'],                   price: 800  },
+      { keys: ['пион'],      forms: ['пион','пиона','пионов'],               price: 1200 },
+      { keys: ['тюльпан'],   forms: ['тюльпан','тюльпана','тюльпанов'],      price: 400  },
+      { keys: ['хризантем'], forms: ['хризантема','хризантемы','хризантем'], price: 500  },
+    ];
+    function ruPlural(n, f1, f2, f5) {
+      const n10 = n % 10, n100 = n % 100;
+      if (n100 >= 11 && n100 <= 19) return f5;
+      if (n10 === 1) return f1;
+      if (n10 >= 2 && n10 <= 4) return f2;
+      return f5;
+    }
+    function parseFlowerOrder(t) {
+      const re = /(\d+)\s*([а-яёa-z]+)/gi;
+      const found = [], seen = new Set();
+      let m;
+      while ((m = re.exec(t)) !== null) {
+        const qty = parseInt(m[1]);
+        const word = m[2].toLowerCase();
+        const flower = STEM_FLOWERS.find(f => f.keys.some(k => word.includes(k)));
+        if (flower && qty > 0 && !seen.has(flower.forms[0])) {
+          seen.add(flower.forms[0]);
+          found.push({ qty, flower });
+        }
+      }
+      return found;
+    }
+
+    async function handleText(raw) {
+      resetIdle();
+      const t = clean(raw);
+
+      // flower calculator — detect "N роз", "5 пионов + 3 тюльпана" etc.
+      const calcItems = parseFlowerOrder(t);
+      if (calcItems.length > 0) {
+        unmatchedCount = 0;
+        const lines = calcItems.map(({ qty, flower }) => {
+          const label = ruPlural(qty, flower.forms[0], flower.forms[1], flower.forms[2]);
+          const sub = qty * flower.price;
+          return qty + ' ' + label + ' × ' + flower.price.toLocaleString('ru') + ' ₸ = ' + sub.toLocaleString('ru') + ' ₸';
+        });
+        const total = calcItems.reduce((s, { qty, flower }) => s + qty * flower.price, 0);
+        const totalLine = calcItems.length > 1 ? '\n💐 Итого: ' + total.toLocaleString('ru') + ' ₸' : '';
+        await botMsg(lines.join('\n') + totalLine + '\n\nХотите оформить заказ?', 700);
+        const orderText = encodeURIComponent('Здравствуйте! Хочу заказать: ' + calcItems.map(({ qty, flower }) => qty + ' ' + ruPlural(qty, flower.forms[0], flower.forms[1], flower.forms[2])).join(', ') + ' (из чата на сайте)');
+        addSuggestions([
+          { label: '📲 Заказать через WhatsApp', action: function() { window.open('https://wa.me/77000000000?text=' + orderText, '_blank'); } },
+          { label: 'Считать ещё', action: function() { addSuggestions(mainMenu()); } },
+        ]);
+        return;
+      }
+
+      if (has(t, 'привет', 'здравствуй', 'добрый', 'салам', 'hello', 'hi', 'хай')) {
+        unmatchedCount = 0;
+        await botMsg('Здравствуйте! Чем могу помочь? Могу подобрать букет или ответить на вопросы о доставке и оплате.', 800);
+        addSuggestions(mainMenu()); return;
+      }
+      if (has(t, 'цен', 'сколько', 'стоимост', 'стоит')) {
+        unmatchedCount = 0;
+        await botMsg('Букеты у нас от 5 000 ₸. Могу подобрать варианты под ваш бюджет — какую сумму рассматриваете?', 1000);
+        addSuggestions([
+          { label: 'До 10 000 ₸',       action: () => flowProducts('Любой повод', 'roses',   0, 10000) },
+          { label: '10 000 — 20 000 ₸', action: () => flowProducts('Любой повод', 'mix',  10000, 20000) },
+          { label: '20 000 — 35 000 ₸', action: () => flowProducts('Любой повод', 'peonies', 20000, 35000) },
+          { label: 'Свыше 35 000 ₸',    action: () => flowProducts('Любой повод', 'roses',   35000, Infinity) },
+        ]); return;
+      }
+      if (has(t, 'достав', 'привез', 'доставк', 'сколько ехать')) {
+        unmatchedCount = 0; await flowDelivery(); return;
+      }
+      if (has(t, 'оплат', 'kaspi', 'каспи', 'карт', 'налич')) {
+        unmatchedCount = 0; await flowPayment(); return;
+      }
+      if (has(t, 'роз')) {
+        unmatchedCount = 0;
+        await botMsg('Да, у нас всегда свежие розы! Поставки 4 раза в неделю напрямую из Голландии и Эквадора. Показать варианты?', 1000);
+        addSuggestions([{ label: 'Показать розы', action: () => flowBudget('Розы', 'roses') }]); return;
+      }
+      if (has(t, 'тюльпан')) {
+        unmatchedCount = 0;
+        await botMsg('Да, у нас всегда свежие тюльпаны! Поставки 4 раза в неделю из Голландии и Эквадора. Показать варианты?', 1000);
+        addSuggestions([{ label: 'Показать тюльпаны', action: () => flowBudget('Тюльпаны', 'tulips') }]); return;
+      }
+      if (has(t, 'пион')) {
+        unmatchedCount = 0;
+        await botMsg('Да, у нас всегда свежие пионы! Поставки 4 раза в неделю из Голландии и Эквадора. Показать варианты?', 1000);
+        addSuggestions([{ label: 'Показать пионы', action: () => flowBudget('Пионы', 'peonies') }]); return;
+      }
+      if (has(t, 'сегодня', 'сейчас', 'срочно', 'быстро')) {
+        unmatchedCount = 0;
+        await botMsg('Да! Принимаем срочные заказы — доставка от 60 минут после оплаты. Что вы хотели бы заказать?', 900);
+        addSuggestions([
+          { label: 'День рождения', action: () => flowBudget('День рождения', 'roses') },
+          { label: 'Романтика',     action: () => flowBudget('Романтика',     'roses') },
+          { label: '8 марта',       action: () => flowBudget('8 марта',       'tulips') },
+          { label: 'Просто так',    action: () => flowBudget('Просто так',    'peonies') },
+        ]); return;
+      }
+      if (has(t, 'заказ', 'купить', 'хочу', 'оформ')) {
+        unmatchedCount = 0; await flowPickBouquet(); return;
+      }
+      if (has(t, 'свадьб', 'невест')) {
+        unmatchedCount = 0;
+        await botMsg('Свадебные букеты — наша специализация. Букет невесты от 18 000 ₸, оформление зала рассчитываем индивидуально. Перевести вас на флориста?', 1200);
+        addWALink('Открыть WhatsApp', 'https://wa.me/77000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D1%81%D0%B2%D0%B0%D0%B4%D0%B5%D0%B1%D0%BD%D0%BE%D0%B5%20%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5.'); return;
+      }
+      if (has(t, 'фото', 'картинк', 'видео')) {
+        unmatchedCount = 0;
+        await botMsg('Перед отправкой каждого букета мы присылаем фото для подтверждения. 📸 Хотите выбрать букет?', 900);
+        addSuggestions([{ label: 'Выбрать букет', action: flowPickBouquet }]); return;
+      }
+      if (has(t, 'возврат', 'вернуть', 'плох', 'недовол')) {
+        unmatchedCount = 0;
+        await botMsg('Качество для нас — главное. Если что-то не так с букетом, мы сразу заменим или вернём деньги. Опишите ситуацию, передам флористу.', 1100);
+        addWALink('Открыть WhatsApp', 'https://wa.me/77000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D0%B1%D1%81%D1%83%D0%B4%D0%B8%D1%82%D1%8C%20%D0%BA%D0%B0%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0.'); return;
+      }
+      if (has(t, 'час', 'работает', 'открыт', 'закрыт')) {
+        unmatchedCount = 0; await flowHours(); return;
+      }
+
+      // no match
+      unmatchedCount++;
+      if (unmatchedCount >= 3) {
+        unmatchedCount = 0;
+        await botMsg('Кажется, я не совсем понимаю запрос. Давайте переведу вас к живому флористу — он точно поможет!', 1000);
+        addWALink('Открыть WhatsApp', 'https://wa.me/77000000000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9F%D0%B8%D1%88%D1%83%20%D0%B8%D0%B7%20%D1%87%D0%B0%D1%82%D0%B0%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82%D0%B5.');
+        addSuggestions(mainMenu());
+      } else {
+        await botMsg('Хм, не уверена что поняла. Могу помочь с выбором букета, доставкой или оплатой. Или хотите, я переведу вас на флориста?', 1000);
+        addSuggestions(mainMenu());
+      }
+    }
+
+    // ---- input wiring ----
+    inputEl.addEventListener('input', () => { sendBtn.disabled = !inputEl.value.trim(); });
+    inputEl.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+    });
+    sendBtn.addEventListener('click', send);
+    function send() {
+      const text = inputEl.value.trim();
+      if (!text) return;
+      inputEl.value = ''; sendBtn.disabled = true;
+      addUserMsg(text);
+      handleText(text);
+    }
+  })();
+
+  // ============ HEADER SCROLL ============
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  // ============ REVEAL ON SCROLL ============
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -80px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ============ INIT ============
+  loadProducts(); // fetches from Google Sheets, falls back to hardcoded data
+  updateCart();
+
+  // set tomorrow as default delivery date
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  document.getElementById('deliveryDate').valueAsDate = tomorrow;
+</script>
+
+</body>
+</html>
