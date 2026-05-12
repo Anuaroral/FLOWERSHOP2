@@ -1,3 +1,10 @@
 whatsapp-demo-chatbot-python/
 .claude/
 .DS_Store
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
