@@ -1103,8 +1103,16 @@
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
   }
   .cart-drawer.open { transform: translateX(0); }
+
+  .cart-scroll {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
 
   .cart-header {
     padding: 28px 32px;
@@ -1112,6 +1120,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 0;
   }
   .cart-header h3 {
     font-size: 28px;
@@ -1133,8 +1142,6 @@
   .cart-close svg { width: 16px; height: 16px; }
 
   .cart-body {
-    flex: 1;
-    overflow-y: auto;
     padding: 24px 32px;
   }
 
@@ -1769,7 +1776,7 @@
       <div class="hero-image">
         <div class="hero-stat">
           <div class="hero-stat-number">4.9</div>
-          <div class="hero-stat-label">★ 2GIS · 870 отзывов</div>
+          <div class="hero-stat-label">★ 2GIS · 420 отзывов</div>
         </div>
         <div class="hero-image-main"></div>
       </div>
@@ -2113,6 +2120,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
+  <div class="cart-scroll">
   <div class="cart-body" id="cartBody"></div>
   <div class="cart-form hidden" id="cartForm">
     <div class="form-group">
@@ -2151,6 +2159,7 @@
     <div class="cart-wa-fallback">
       или <a href="#" onclick="orderViaWhatsApp(); return false;">оформить через WhatsApp</a>
     </div>
+  </div>
   </div>
 </div>
 
